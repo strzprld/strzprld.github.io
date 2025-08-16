@@ -38,19 +38,18 @@
         padding: 12px;
         border-radius: 12px;
         border: 1px solid #ccc;
-        font-size: 1em;          /* ten sam rozmiar co input */
-        font-family: inherit;     /* dziedziczy font z body */
+        font-size: 1em;
         width: 100%;
         box-sizing: border-box;
         transition: all 0.3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* spójny font */
     }
 
-    /* Animacja focus */
     .contact-form input:focus,
     .contact-form textarea:focus {
         border-color: #8b00ff;
-        box-shadow: 0 0 8px rgba(139,0,255,0.3);
-        transform: scale(1.02);
+        box-shadow: 0 4px 15px rgba(139,0,255,0.3);
+        transform: translateY(-2px) scale(1.02);
         outline: none;
     }
 
@@ -69,6 +68,7 @@
         cursor: pointer;
         border: none;
         text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* spójny font */
     }
 
     .back-button-animated:hover {
@@ -87,20 +87,25 @@
         transform: translateX(-5px);
     }
 
+    /* Kontakt przyciski */
+    .contact-buttons {
+        text-align: center;
+        margin-top: 15px; /* mniejszy odstęp od formularza */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
     /* Responsywność */
     @media (max-width: 768px) {
+        .contact-form {
+            gap: 12px;
+        }
         .back-button-animated {
             width: 100%;
             margin-bottom: 10px;
         }
-    }
-
-    .buttons-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin-top: 40px;
     }
 </style>
 </head>
@@ -114,7 +119,7 @@
         <button type="submit" class="back-button-animated">Wyślij wiadomość</button>
     </form>
 
-    <div class="buttons-container">
+    <div class="contact-buttons">
         <a href="/" class="back-button-animated">
             <span class="arrow">⬅</span> Strona główna
         </a>
