@@ -108,24 +108,6 @@
         text-decoration: none;
     }
 
-    /* Responsywność */
-    @media (max-width: 768px) {
-        .profile-header {
-            flex-direction: column;
-            align-items: center;
-        }
-        .profile-info {
-            text-align: center;
-        }
-        .experience, .skills {
-            margin-left: 0;
-        }
-        .skills-list {
-            justify-content: center;
-        }
-    }
-
-    /* Przycisk */
     .back-button-animated {
         display: inline-block;
         padding: 12px 28px;
@@ -149,6 +131,32 @@
     }
     .back-button-animated:hover .arrow {
         transform: translateX(-5px);
+    }
+
+    @media (max-width: 768px) {
+        .profile-header {
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-info {
+            text-align: center;
+        }
+        .experience, .skills {
+            margin-left: 0;
+        }
+        .skills-list {
+            justify-content: center;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .contact a {
+            margin-left: 0 !important;
+        }
     }
 </style>
 </head>
@@ -238,6 +246,8 @@
             <li>Analiza rynku</li>
             <li>Wprowadzanie danych</li>
             <li>Organizacja pracy</li>
+            <li>Biegły angielski w mowie i piśmie</li>
+            <li>Prawo jazdy kat. B</li>
         </ul>
     </div>
 
