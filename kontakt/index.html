@@ -4,129 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontakt | Dawid Ławruk</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-        color: #2c3e50;
-        text-align: center;
-    }
-
-    /* Formularz */
-    .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 30px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 12px;
-        border-radius: 12px;
-        border: 1px solid #ccc;
-        font-size: 1em;
-        width: 100%;
-        box-sizing: border-box;
-        transition: all 0.3s ease;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* spójny font */
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-        border-color: #8b00ff;
-        box-shadow: 0 4px 15px rgba(139,0,255,0.3);
-        transform: translateY(-2px) scale(1.02);
-        outline: none;
-    }
-
-    /* Przycisk */
-    .back-button-animated {
-        display: inline-block;
-        padding: 12px 28px;
-        font-size: 1em;
-        font-weight: 600;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #6a0dad, #8b00ff);
-        box-shadow: 0 4px 15px rgba(107, 0, 255, 0.4);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: none;
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* spójny font */
-    }
-
-    .back-button-animated:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(107, 0, 255, 0.5);
-        background: linear-gradient(135deg, #8b00ff, #6a0dad);
-    }
-
-    .back-button-animated .arrow {
-        display: inline-block;
-        margin-right: 8px;
-        transition: transform 0.3s ease;
-    }
-
-    .back-button-animated:hover .arrow {
-        transform: translateX(-5px);
-    }
-
-    /* Kontakt przyciski */
-    .contact-buttons {
-        text-align: center;
-        margin-top: 15px; /* mniejszy odstęp od formularza */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-
-    /* Responsywność */
-    @media (max-width: 768px) {
-        .contact-form {
-            gap: 12px;
-        }
-        .back-button-animated {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-    }
-</style>
+<link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<div class="container">
-    <h1>Kontakt</h1>
-    <form action="https://formspree.io/f/xyzpazvz" method="POST" class="contact-form">
-        <input type="text" name="name" placeholder="Imię i nazwisko" required>
-        <input type="email" name="email" placeholder="Adres e-mail" required>
-        <textarea name="message" rows="6" placeholder="Twoja wiadomość" required></textarea>
-        <button type="submit" class="back-button-animated">Wyślij wiadomość</button>
-    </form>
+    <button id="darkToggle" class="dark-toggle">🌙</button>
 
-    <div class="contact-buttons">
-        <a href="/" class="back-button-animated">
-            <span class="arrow">⬅</span> Strona główna
-        </a>
-        <a href="https://www.linkedin.com/in/dawid-%C5%82awruk-72bba4207/" target="_blank" class="back-button-animated">
-            LinkedIn
-        </a>
+    <div class="container">
+        <h1>Kontakt</h1>
+        <form action="https://formspree.io/f/xyzpazvz" method="POST" class="contact-form">
+            <input type="text" name="name" placeholder="Imię i nazwisko" required>
+            <input type="email" name="email" placeholder="Adres e-mail" required>
+            <textarea name="message" rows="6" placeholder="Twoja wiadomość" required></textarea>
+            <button type="submit" class="back-button-animated">Wyślij wiadomość</button>
+        </form>
+
+        <div class="contact-buttons">
+            <a href="/" class="back-button-animated">
+                <span class="arrow">⬅</span> Strona główna
+            </a>
+            <a href="https://www.linkedin.com/in/dawid-%C5%82awruk-72bba4207/" target="_blank" class="back-button-animated">
+                LinkedIn
+            </a>
+        </div>
     </div>
-</div>
+
+    <script src="../darkmode.js"></script>
 </body>
 </html>
