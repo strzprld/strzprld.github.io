@@ -6,23 +6,23 @@
   <title>Dawid Ławruk</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-transition">
 
   <!-- Przycisk trybu ciemnego -->
-  <button id="darkToggle">🌙</button>
+  <button id="darkToggle" class="dark-toggle">🌙</button>
 
-  <header>
-    <h1>Dawid Ławruk</h1>
-    <nav>
-      <a href="/o-mnie">O mnie</a>
-      <a href="#projekty">Projekty</a>
-      <a href="/kontakt">Kontakt</a>
-    </nav>
-  </header>
+  <div class="container">
+<header>
+  <h1>Dawid Ławruk</h1>
 
-  <section id="projekty">
-    <!-- Tutaj możesz wstawić swoje projekty -->
-  </section>
+  <div class="contact-buttons">
+    <a href="./o-mnie" class="back-button-animated">O mnie</a>
+    <a href="#projekty" class="back-button-animated">Projekty</a>
+    <a href="./kontakt" class="back-button-animated">Kontakt</a>
+  </div>
+</header>
+
+  </div>
 
   <script src="darkmode.js"></script>
 </body>

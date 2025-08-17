@@ -1,8 +1,52 @@
+/* ---------- ZMIENNE CSS ---------- */
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --container-bg: #fff;
+    --card-bg: #e4dcf5; /* dla experience-item */
+    --skill-bg: #4B0082; /* dla skills-list li */
+    --shadow-color: rgba(0,0,0,0.1);
+    --primary-color: #4B0082;
+    --secondary-color: #6a0dad;
+    --accent-color: #8b00ff;
+    --link-color: #2c3e50;
+    --hover-gradient: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #eee;
+    --container-bg: #1e1e1e;
+    --card-bg: #2a2a2a; /* ciemne tło kart */
+    --skill-bg: #6a0dad; /* ciemniejszy fiolet dla umiejętności */
+    --shadow-color: rgba(0,0,0,0.5);
+    --link-color: #dda0ff;
+}
+
+/* Gradient tylko dla nagłówków profilowych w dark mode */
+.profile-header h3 {
+    color: var(--primary-color);
+    font-style: italic;
+    text-align: center;
+    margin-top: 5px;
+}
+
+body.dark-mode .profile-header h3 {
+    background: linear-gradient(90deg, #e9d2ff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.dark-mode h3 {
+    background: linear-gradient(90deg, #e9d2ff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* ---------- PODSTAWOWE ---------- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
@@ -12,87 +56,28 @@ body {
     max-width: 900px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--container-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px var(--shadow-color);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* ---------- DARK MODE ---------- */
-body.dark-mode {
-    background-color: #121212;
-    color: #eee;
-}
-
-body.dark-mode .container {
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3,
-body.dark-mode p,
-body.dark-mode li {
-    color: #f0f0f0;
-}
-
-body.dark-mode a {
-    color: #dda0ff;
-}
-
-body.dark-mode .experience-item {
-    background: linear-gradient(to right, #3a2a5b, #2b2b2b);
-}
-
-body.dark-mode .skills-list li {
-    background-color: #6a0dad;
-    color: #fff;
-}
-
-body.dark-mode .skills-list li:hover {
-    background: linear-gradient(135deg, #8b00ff, #6a0dad);
-}
-
-body.dark-mode .back-button-animated {
-    background: linear-gradient(135deg, #444, #666);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-/* ---------- PRZYCISK DARK MODE ---------- */
-.dark-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    padding: 10px 15px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 10px;
-    background-color: #4B0082;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.dark-toggle:hover {
-    background-color: #6a0dad;
-}
 /* ---------- TYPOGRAFIA ---------- */
 h1 {
-    color: #2c3e50;
+    color: var(--link-color);
     text-align: center;
-}
-
-h3 {
-    color: #4B0082;
-    font-style: italic;
-    text-align: center;
-    margin-top: 5px;
 }
 
 h2 {
-    color: #2c3e50;
+    color: var(--link-color);
     margin-bottom: 10px;
+}
+
+h3 {
+    color: var(--primary-color);
+    font-style: italic;
+    text-align: center;
+    margin-top: 5px;
 }
 
 /* ---------- PROFIL ---------- */
@@ -134,7 +119,7 @@ h2 {
     margin-bottom: 15px;
     padding: 10px;
     border-radius: 10px;
-    background: linear-gradient(to right, #e8e0f8, #f4f4f9);
+    background: var(--card-bg);
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
@@ -146,7 +131,7 @@ h2 {
 .experience-item h3 {
     margin: 0;
     font-size: 1.1em;
-    color: #4B0082;
+    color: var(--primary-color);
 }
 
 .experience-item p, .experience-item ul {
@@ -162,18 +147,19 @@ h2 {
 }
 
 .skills-list li {
-    background-color: #4B0082;
+    background-color: var(--skill-bg);
     color: #fff;
     padding: 5px 10px;
     margin: 5px;
     border-radius: 8px;
     font-size: 0.9em;
-    transition: background 0.3s, transform 0.3s;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     cursor: default;
+    will-change: transform, background;
 }
 
 .skills-list li:hover {
-    background: linear-gradient(135deg, #6a0dad, #8b00ff);
+    background: var(--hover-gradient);
     transform: translateY(-3px);
 }
 
@@ -188,34 +174,63 @@ h2 {
 }
 
 /* ---------- PRZYCISK POWROT ---------- */
-.back-button-animated {
+.back-button-animated,
+.contact-form button.back-button-animated,
+a.back-button-animated {
+    all: unset;
     display: inline-block;
     padding: 12px 28px;
     font-size: 1em;
     font-weight: 600;
     color: #fff;
     border-radius: 12px;
-    background: linear-gradient(135deg, #6a0dad, #8b00ff);
+    background: var(--hover-gradient);
     box-shadow: 0 4px 15px rgba(107, 0, 255, 0.4);
-    transition: all 0.3s ease;
     cursor: pointer;
     text-align: center;
+    text-decoration: none;
+    line-height: 1.2;
+    vertical-align: middle;
+    transition: all 0.3s ease;
 }
 
-.back-button-animated:hover {
+.back-button-animated:hover,
+.contact-form button.back-button-animated:hover,
+a.back-button-animated:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(107, 0, 255, 0.5);
-    background: linear-gradient(135deg, #8b00ff, #6a0dad);
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
 }
 
-.back-button-animated .arrow {
+.back-button-animated .arrow,
+a.back-button-animated .arrow {
     display: inline-block;
     margin-right: 8px;
     transition: transform 0.3s ease;
 }
 
-.back-button-animated:hover .arrow {
+.back-button-animated:hover .arrow,
+a.back-button-animated:hover .arrow {
     transform: translateX(-5px);
+}
+
+/* ---------- PRZYCISK DARK MODE ---------- */
+.dark-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.dark-toggle:hover {
+    background-color: var(--secondary-color);
 }
 
 /* ---------- FORMULARZ ---------- */
@@ -240,7 +255,7 @@ h2 {
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: #8b00ff;
+    border-color: var(--accent-color);
     box-shadow: 0 4px 15px rgba(139,0,255,0.3);
     transform: translateY(-2px) scale(1.02);
     outline: none;
@@ -249,7 +264,7 @@ h2 {
 body.dark-mode .contact-form input,
 body.dark-mode .contact-form textarea {
     background-color: #3a3a3a;
-    border-color: #8b00ff;
+    border-color: var(--accent-color);
     color: #fff;
 }
 
@@ -278,12 +293,12 @@ body.dark-mode .contact-form textarea {
     .skills-list {
         justify-content: center;
     }
-
     .contact-form {
         gap: 12px;
     }
-
-    .back-button-animated {
+    .back-button-animated,
+    .contact-form button.back-button-animated,
+    a.back-button-animated {
         width: 100%;
         margin-bottom: 0px;
         text-align: center;
@@ -297,4 +312,37 @@ body.dark-mode .contact-form textarea {
     .dark-toggle {
         top: 30px;
         right: 10px;
+    }
+}
+
+/* ---------- PRZEJŚCIE MOTYWU ---------- */
+body.theme-transition {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.theme-transition .container {
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+body.theme-transition .experience-item {
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+}
+
+body.theme-transition .skills-list li {
+    transition: background 0.5s ease, transform 0.5s ease;
+}
+
+body.theme-transition .back-button-animated,
+body.theme-transition .contact-form button.back-button-animated,
+body.theme-transition a.back-button-animated {
+    transition: all 0.5s ease;
+}
+
+body.theme-transition .contact-form input,
+body.theme-transition .contact-form textarea {
+    transition: all 0.5s ease;
+}
+
+body.theme-transition .dark-toggle {
+    transition: background 0.5s ease;
 }

@@ -1,37 +1,38 @@
 // Pobranie przycisku do przełączania trybu
 const toggleBtn = document.getElementById("darkToggle");
 
-// Funkcja ustawiająca tryb: "dark" lub "light"
+// Funkcja ustawiająca tryb: "dark" lub "light" z lekkim efektem przejścia
 function setTheme(mode) {
-    if (mode === "dark") {
-        document.body.classList.add("dark-mode");
-        if (toggleBtn) toggleBtn.textContent = "☀️"; // ikona do przełączenia na jasny
-    } else {
-        document.body.classList.remove("dark-mode");
-        if (toggleBtn) toggleBtn.textContent = "🌙"; // ikona do przełączenia na ciemny
+    const isDark = mode === "dark";
+
+    // Dodajemy klasę przejściową na chwilę dla efektu fade
+    document.body.classList.add("theme-transition");
+    setTimeout(() => {
+        document.body.classList.toggle("dark-mode", isDark);
+        document.body.classList.remove("theme-transition");
+    }, 100); // 100ms opóźnienia dla płynności
+
+    if (toggleBtn) {
+        toggleBtn.textContent = isDark ? "☀️" : "🌙"; // ikona do zmiany trybu
     }
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-// Sprawdzenie zapisanego trybu w localStorage
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) {
-    setTheme(savedTheme);
-} else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    // Jeśli brak zapisu, użyj preferencji systemowej
-    setTheme("dark");
-} else {
-    setTheme("light");
-}
+// Inicjalizacja motywu na podstawie zapisanych preferencji lub systemu
+(function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+    }
+})();
 
 // Obsługa kliknięcia przycisku przełączania trybu
 if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-        if (document.body.classList.contains("dark-mode")) {
-            setTheme("light");
-            localStorage.setItem("theme", "light");
-        } else {
-            setTheme("dark");
-            localStorage.setItem("theme", "dark");
-        }
+        setTheme(document.body.classList.contains("dark-mode") ? "light" : "dark");
     });
 }
